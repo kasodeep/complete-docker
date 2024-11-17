@@ -1,35 +1,38 @@
+# running different services together.
 services:
-  postgres:
-    container_name: postgres-sql
-    image: postgres    
+  mysql:
+    container_name: db
+    image: mysql
+    restart: always
     environment:
-      POSTGRES_USER: username
-      POSTGRES_PASSWORD: password
-      POSTGRES_DB: demo_db
+      MYSQL_ROOT_PASSWORD: password
+      MYSQL_PASSWORD: password
+      MYSQL_USER: root
+      MYSQL_DATABASE: banking_app
     ports:
-      - "5432:5432"
+      - '3306:3306'
     volumes:
-      - postgres: /var/lib/postgres/data
+      - data:/var/lib/mysql
     networks:
       - spring-boot-network
 
   spring-boot-app:
-    container_name: spring-demo
-    image: spring-demo
+    container_name: banking-run
+    image: banking-app
     ports:
-      - "8080:8080"
+      - '8080:8080'
     networks:
       - spring-boot-network
     depends_on:
-      - postgres
+      - mysql
 
 volumes:
-  postgres:
+  data:
 
 networks:
   spring-boot-network:
     driver: bridge
-
-# docker-compose up - start the containers.
-# docker-compose -d up
-# docker-compose down - stop the containers.
+# To start the containers -> docker-compose up
+# To start the containers detached -> docker-compose -d up
+# To stop the containers -> docker-compose down
+# To remove the containers -> docker-compose rm
