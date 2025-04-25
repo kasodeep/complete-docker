@@ -5,7 +5,7 @@
 1. **Container**: `/var/lib/mysql` -> Virtual File System.
 2. **Disk**: `/user/some/path` -> Physical File System.
 
-- Folder in physical file system(host) is mounted into the virtual file system of Docker (container).
+- Folder in physical file system (host) is mounted into the virtual file system of Docker (container).
 
 ### Types:
 

@@ -10,7 +10,7 @@ services:
       MYSQL_USER: root
       MYSQL_DATABASE: banking_app
     ports:
-      - '3306:3306'
+      - "3306:3306"
     volumes:
       - data:/var/lib/mysql
     networks:
@@ -20,7 +20,7 @@ services:
     container_name: banking-run
     image: banking-app
     ports:
-      - '8080:8080'
+      - "8080:8080"
     networks:
       - spring-boot-network
     depends_on:

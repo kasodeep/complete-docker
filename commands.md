@@ -6,7 +6,7 @@
 **Benefits**:
 Consistency, Portability, Resource Efficiency, Scalability, Version and Rollback.
 
-### Image;
+### Image:
 
 - A container image is a standardized package that includes all of the files, binaries, libraries, and configurations to run a container.
 
